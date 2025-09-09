@@ -34,7 +34,7 @@ if torch.cuda.device_count() > 1:
     print(f"Let's use {torch.cuda.device_count()} GPUs!")
     sadnet = nn.DataParallel(sadnet)
 
-optimizer_sad = torch.optim.Adam(sadnet.parameters(), lr=LEARNING_RATE1, betas=(0.8, 0.9))
+optimizer_sad = torch.optim.Adam(sadnet.parameters(), lr=LEARNING_RATE1, betas=(0.9, 0.999))
 loss_ssim = losses.log_SSIM_loss().to(device)
 writer_sadnet = SummaryWriter(f"logs/sadnet")
 writer_gt = SummaryWriter(f"logs/gt")
